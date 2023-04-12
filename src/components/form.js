@@ -7,14 +7,9 @@ export default function Form() {
 
   const CreateSite = ( e ) => {
     e.preventDefault();
-    const oath_token =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzOTUiLCJqdGkiOiJjMmJkMTcxYTRmZDkwMGEzNTQ5ZGE4MWJlNzBlYWE4NzQ3MTg4ZTRmNmM1MjA2NDIyZTY4NGUyODEwNGZlMGYyODVlMDZmYzYyZTA4MDkyNSIsImlhdCI6MTY4MTI3NjExOC42NjEyMDcsIm5iZiI6MTY4MTI3NjExOC42NjEyMDksImV4cCI6MTcxMjg5ODUxOC42NDg2MzEsInN1YiI6IjEwMTk0Iiwic2NvcGVzIjpbXX0.lYGNj9r52-POBlDp7mj4XBFeJIr34Nm2iPKvm0BU1n7GBJjuBHGghYK2WlLyH5dhaQ7GQ5jBtZi3nAI4-tOw6jsD1N-gC96c56zZfvooJAPnSTWMrL1YimgkubnLaPZQT1-yqEz3rrZF7EQa0L__fVftfVdsmwoFxvq4Idv6hf5F8p06rSYucRf42Wuyxqw20hRFyIMesKPsohNB559a7oonmQ0dqQNfhEN6G9rjMFHGzj-31_9rGx6z5Nn-YCB10jyo7vqzFXtgvnXcPvONydYUnBEjCiSNb-vqVq3tYd3KfFHtsMDCA4Dv9BtahtK4UP-jXcPGn-44irfCxpgkHuNnXXd4aJ8HBbHf_9Bf8_UzNcDZN406JiUZ3aHR0p48GYS1wjs0wKBncAkzj7OaAyW2yLLF1tz6IJstHdvD_QNRCBqcIHgl6wIWnxTHR7Ot08yGcb98crgOavF83Aq4YH6ltPNghM3tffMv-4mZdCOYx6Ig349J8Z6mU5M2k15lu8p8jZmmryV_DDm8Y3W7QOcoG08sLjbsxtdpFwkloK-udbQhwxUmuxI87LXskRFNdvbYt-qUjtaNIxX518A8oLG_97pjVpVFjD6Wq0XGntwTDuwOLNY7xDD5U1u6fdfVxWyCdtcLr6T_5GzgXysd-E0o_uVI96Gxdyis7F1i69k";
+    const oath_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzOTUiLCJqdGkiOiJjMmJkMTcxYTRmZDkwMGEzNTQ5ZGE4MWJlNzBlYWE4NzQ3MTg4ZTRmNmM1MjA2NDIyZTY4NGUyODEwNGZlMGYyODVlMDZmYzYyZTA4MDkyNSIsImlhdCI6MTY4MTI3NjExOC42NjEyMDcsIm5iZiI6MTY4MTI3NjExOC42NjEyMDksImV4cCI6MTcxMjg5ODUxOC42NDg2MzEsInN1YiI6IjEwMTk0Iiwic2NvcGVzIjpbXX0.lYGNj9r52-POBlDp7mj4XBFeJIr34Nm2iPKvm0BU1n7GBJjuBHGghYK2WlLyH5dhaQ7GQ5jBtZi3nAI4-tOw6jsD1N-gC96c56zZfvooJAPnSTWMrL1YimgkubnLaPZQT1-yqEz3rrZF7EQa0L__fVftfVdsmwoFxvq4Idv6hf5F8p06rSYucRf42Wuyxqw20hRFyIMesKPsohNB559a7oonmQ0dqQNfhEN6G9rjMFHGzj-31_9rGx6z5Nn-YCB10jyo7vqzFXtgvnXcPvONydYUnBEjCiSNb-vqVq3tYd3KfFHtsMDCA4Dv9BtahtK4UP-jXcPGn-44irfCxpgkHuNnXXd4aJ8HBbHf_9Bf8_UzNcDZN406JiUZ3aHR0p48GYS1wjs0wKBncAkzj7OaAyW2yLLF1tz6IJstHdvD_QNRCBqcIHgl6wIWnxTHR7Ot08yGcb98crgOavF83Aq4YH6ltPNghM3tffMv-4mZdCOYx6Ig349J8Z6mU5M2k15lu8p8jZmmryV_DDm8Y3W7QOcoG08sLjbsxtdpFwkloK-udbQhwxUmuxI87LXskRFNdvbYt-qUjtaNIxX518A8oLG_97pjVpVFjD6Wq0XGntwTDuwOLNY7xDD5U1u6fdfVxWyCdtcLr6T_5GzgXysd-E0o_uVI96Gxdyis7F1i69k";
 
     setIsSiteCreationInProgress( true );
-
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer " + oath_token);
-    myHeaders.append("Content-Type", "application/json");
 
     const domain_url = siteUrl + ".powerfuldocs.com";
 
@@ -39,7 +34,10 @@ export default function Form() {
 
     var requestOptions = {
       method: "POST",
-      headers: myHeaders,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${oath_token}`
+      },
       body: raw,
       redirect: "follow",
       mode: "no-cors", 
