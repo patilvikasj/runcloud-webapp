@@ -40,6 +40,7 @@ export default function Form() {
       },
       body: raw,
       redirect: "follow",
+      mode: "no-cors", 
     };
 
     fetch("https://my.gridpane.com/oauth/api/v1/site", requestOptions)
